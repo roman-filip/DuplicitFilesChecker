@@ -31,7 +31,15 @@ namespace RFI.DuplicitFilesChecker.Services.Services
                 throw new DirectoryNotFoundException($"Directory '{directory}' for calculation not found.");
             }
 
-            throw new NotImplementedException();
+            var files = new DirectoryInfo(directory).GetFiles("*", SearchOption.AllDirectories);
+
+            var fileInfos = new List<Entities.FileInfo>(files.Length);
+            foreach (var file in files)
+            {
+                fileInfos.Add(new Entities.FileInfo());
+            }
+
+            return fileInfos;
         }
     }
 }

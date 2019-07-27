@@ -7,18 +7,6 @@ namespace RFI.DuplicitFilesChecker.Services
 {
     public class Class1
     {
-        public void Tmp()
-        {
-            Console.WriteLine("Search pattern AllDirectories returns:");
-            DirectoryInfo di = new DirectoryInfo(@"C:\Users\tomfitz\Documents\ExampleDir");
-            foreach (var fi in di.GetFiles("*", SearchOption.AllDirectories))
-            {
-                Console.WriteLine(fi.Name);
-            }
-        }
-
-        ///////////////////////////////////////////////////////////////////////////////////////////
-
         static void Main(string[] args)
         {
             string source = "Hello World!";

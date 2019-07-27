@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RFI.DuplicitFilesChecker.Services.Services;
@@ -32,6 +33,14 @@ namespace RFI.DuplicitFilesChecker.Tests
         public void CalculateFileInfos_NonExistingDirectory()
         {
             Assert.ThrowsException<DirectoryNotFoundException>(() => _fileInfoCalculationService.CalculateFileInfos("Non existing directory"));
+        }
+
+        [TestMethod]
+        public void CalculateFileInfos_ValidateFilesCount()
+        {
+            var fileInfos = _fileInfoCalculationService.CalculateFileInfos(@".\TestData");
+            Assert.IsNotNull(fileInfos);
+            Assert.AreEqual(9, fileInfos.Count());
         }
     }
 }

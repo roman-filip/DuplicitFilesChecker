@@ -1,4 +1,4 @@
-﻿using System;
+﻿using CommandLine;
 
 namespace RFI.DuplicitFilesChecker.Console
 {
@@ -6,7 +6,17 @@ namespace RFI.DuplicitFilesChecker.Console
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
+            new Parser(config =>
+            {
+                config.EnableDashDash = true;
+                config.HelpWriter = System.Console.Out;
+                config.MaximumDisplayWidth = 200;
+            })
+                .ParseArguments<CommandLineOptions>(args)
+                .WithParsed(o =>
+                {
+                    System.Console.WriteLine($"Hello World: {o.InputDirectory}, {o.OutputFile}");
+                });
         }
     }
 }

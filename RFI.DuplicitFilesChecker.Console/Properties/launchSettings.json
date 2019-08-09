@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "RFI.DuplicitFilesChecker.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "-d \"c:\\_GitHub\\DuplicitFilesChecker\\RFI.DuplicitFilesChecker.Tests\\TestData\" -f \"FileInfos.json\""
+    }
+  }
+}

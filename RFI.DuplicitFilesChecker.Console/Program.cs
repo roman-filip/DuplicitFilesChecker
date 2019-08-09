@@ -1,4 +1,7 @@
-﻿using CommandLine;
+﻿using System.Security.Cryptography;
+using CommandLine;
+using RFI.DuplicitFilesChecker.Services.Facades;
+using RFI.DuplicitFilesChecker.Services.Services;
 
 namespace RFI.DuplicitFilesChecker.Console
 {
@@ -15,7 +18,8 @@ namespace RFI.DuplicitFilesChecker.Console
                 .ParseArguments<CommandLineOptions>(args)
                 .WithParsed(o =>
                 {
-                    System.Console.WriteLine($"Hello World: {o.InputDirectory}, {o.OutputFile}");
+                    new FileWriterFacade(new FileInfoCalculationService(MD5.Create()))
+                        .WriteFilesInfoToFile(o.InputDirectory, o.OutputFile);
                 });
         }
     }
